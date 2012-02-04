@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+	<title>TwiLinks</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+</head>
+<body>
+
+<div class="clearfix"></div>
+
+<div id="wrap" class="clearfix">
+{if LoginController::isLogined()}
+	
+	<a href="/login/logout" class="btn red" style="float: right;" id="logoutButton"><span class="icon"><span aria-hidden="true">x</span></span>Logout</a>
+
+
+	<h3>Hi, {$user->name}!</h3>
+	
+	{if count($links) == 0}
+		<p>You have no links at this time =( Just add one using this form:</p>
+		<table cellspacing="0" cellpadding="0" style="display: none;" id="linksTable">
+	{else}
+		<table cellspacing="0" cellpadding="0" id="linksTable">
+	{/if}
+		<thead><tr>
+		<th>Link address</th>
+		<th>Description</th>
+		<th class="actions"></th>
+	</tr></thead>
+
+	<tbody>
+	
+	{foreach $links as $link}
+	<tr>
+		<td><a href="go/{$link->getId()}" target="_blank">{$link->link}</a><br>
+			<span class="date">Last edit: {date('H:i d.m.Y',$link->add_date)}</span>
+		</td>
+		<td>{$link->description}</td>
+		<td class="actions" data-linkId="{$link->getId()}">
+			<a href="#" class="edit" title="Edit this link"><span class="icon green small"><span aria-hidden="true">7</span></span></a>
+			<a href="#" class="delete" title="Delete this link"><span class="icon red small"><span aria-hidden="true">T</span></span></a>
+			<a href="#" class="twitter" title="Share on Twitter"><span class="icon social blue"><span aria-hidden="true">e</span></span></a>
+		</td>
+	</tr>
+	{/foreach}
+	</tbody>
+	</table>
+
+	<form action="" id="addForm">
+		<input type="hidden">
+<a class="btn small pink" style="float: right; margin-top: 10px;" href="javascript:window.open('{URLUtils::getSiteURL()}?l='+encodeURIComponent(window.location.href)+'&d='+encodeURIComponent(document.title)+'#addForm')" title="Just drag this link to your Bookmarks bar!">Bookmarklet for quick adding!</a>
+		<h5>Add new link</h5>
+
+		<label>Link address
+			<input type="text" name="link" value="{if isset($smarty.get.l)}{htmlspecialchars($smarty.get.l)}{/if}">
+		</label>
+
+		<label>Description
+			<input type="text" name="description" value="{if isset($smarty.get.d)}{htmlspecialchars($smarty.get.d)}{/if}">
+		</label>
+
+		<div class="notice" style="display: none;"><span class="icon medium"><span aria-hidden="true">X</span></span><span class="text"></span>
+		<a href="#close" class="icon close"><span aria-hidden="true">x</span></a></div>
+
+		<input type="submit" value="Add new link">
+	</form>
+
+	<div class="col_6">
+		<h5>Popular domains since beginning of the time</h5>
+		<table cellspacing="0" cellpadding="0">
+	
+			<thead><tr>
+			<th>Domain</th>
+			<th>Link count</th>
+		</tr></thead>
+		<tbody>
+		{foreach $statAll as $stat}
+		<tr>
+			<td><a href="http://{$stat.domain}" target="_blank">{$stat.domain}</a></td>
+			<td>{$stat.count}</td>
+		</tr>
+		{/foreach}
+		</tbody>
+		</table>
+	</div>
+	
+	<div class="col_6">
+		<h5>Last month popular domains</h5>
+		<table cellspacing="0" cellpadding="0">
+	
+			<thead><tr>
+			<th>Domain</th>
+			<th>Link count</th>
+		</tr></thead>
+		<tbody>
+		{foreach $statAll as $stat}
+		<tr>
+			<td><a href="http://{$stat.domain}" target="_blank">{$stat.domain}</a></td>
+			<td>{$stat.count}</td>
+		</tr>
+		{/foreach}
+		</tbody>
+		</table>
+	</div>
+{else}
+<div class="center">
+	<a href="/login/loginWithTW"><span class="icon social blue large"><span aria-hidden="true">e</span></span>Login via Twitter</a>
+</div>
+{/if}
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="js/prettify.js"></script>
+<script src="js/kickstart.js"></script>
+<script src="js/js.js"></script>
+
+</body>	
+</html>

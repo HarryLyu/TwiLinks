@@ -1,0 +1,35 @@
+body{
+margin:0;
+padding:0;
+color:#000;
+background:#efefef url(img/grid.png) repeat center top;
+font:normal 0.9em/150% 'Arimo', "Trebuchet MS", arial, verdana, sans-serif;
+text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
+}
+
+#wrap{
+width:920px;/*960*/
+background:#fff;
+margin:30px auto 30px auto;
+padding: 20px;
+border:1px solid #ccc;
+}
+
+.menu{
+	margin:-1px -1px 0 -1px;
+}
+
+form {
+	border:1px solid lightblue;
+	background:#f5f5f5;
+	padding: 3px 10px;
+}
+
+.actions {
+	width: 60px;
+}
+
+.date {
+	color: gray;
+	font-size: 10px;
+}
