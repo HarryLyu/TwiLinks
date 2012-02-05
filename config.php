@@ -10,7 +10,7 @@ $GBL_CONFIG = array (
                 'server'    =>  'localhost',
                 'username'  =>  'root',
                 'password'  =>  '',
-                'database'  =>  '',
+                'database'  =>  'linker',
                 'connectQueries' => array(
                         "SET NAMES utf-8",
                         "set character_set_client='utf8'",
@@ -23,8 +23,8 @@ $GBL_CONFIG = array (
                 'timezone'	=>	'Asia/Novosibirsk'
     ),
     'twitter'=>array(
-		'key'		=> '',
-		'secret'	=> '',
+		'key'		=> 'FbjV9Hh3c1MQKZl8jHVOqQ',
+		'secret'	=> 'saS5b9GX2SXYEoeYEQrHClb4dH5gUgTzf3nCK8p99E',
 		'url'		=>	array(
 			'request'	=>	'https://api.twitter.com/oauth/request_token',
 			'authorize'	=>	'https://api.twitter.com/oauth/authorize',

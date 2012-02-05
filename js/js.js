@@ -35,8 +35,9 @@ $(document).ready(function(){
 				var row = '<tr><td><a href="/go/' + data.id + '" target="_blank">' + link + '</a><br><span class="date">Last edit: right now</span></td>\
 				<td>' + descr + '</td>\
 				<td class="actions" data-linkId="' + data.id + '">\
-					<a href="#" class="edit"><span class="icon green small" title="Edit this link"><span aria-hidden="true">7</span></span></a>\
-					<a href="#" class="delete"><span class="icon red small" title="Delete this link"><span aria-hidden="true">T</span></span></a>\
+					<a href="#" class="edit" title="Edit this link"><span class="icon green small"><span aria-hidden="true">7</span></span></a>\
+					<a href="#" class="delete" title="Delete this link"><span class="icon red small"><span aria-hidden="true">T</span></span></a>\
+					<a href="#" class="twitter" title="Share on Twitter"><span class="icon social blue"><span aria-hidden="true">e</span></span></a>\
 				</td></tr>';
 
 				$('#linksTable').show().find('tbody').append(row);
